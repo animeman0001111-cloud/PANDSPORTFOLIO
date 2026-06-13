@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear Algebra – Home</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#555;line-height:1.6}
+nav{background:#fff;padding:.9rem 1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:0 2px 10px rgba(0,0,0,.07);position:sticky;top:0;z-index:100}
+.brand{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.05rem;color:#222;text-decoration:none}
+.brand svg{width:28px;height:28px}
+.nav-links{display:flex;gap:1.4rem;flex:1;flex-wrap:wrap}
+.nav-links a{text-decoration:none;color:#777;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:#00C896}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;margin-left:auto}
+.hamburger span{display:block;width:22px;height:2px;background:#555;border-radius:2px;transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:57px;left:0;right:0;background:#fff;padding:.8rem 1rem;box-shadow:0 6px 20px rgba(0,0,0,.1);z-index:99;border-top:1px solid #f0f0f0}
+.mobile-menu a{display:block;padding:.55rem 1rem;color:#555;text-decoration:none;border-radius:8px;font-size:.92rem}
+.mobile-menu a:hover{background:#f0fdf9;color:#00C896}
+.mobile-menu.open{display:block}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
+.hero{position:relative;text-align:center;padding:4rem 2rem 3rem;overflow:hidden;background:linear-gradient(135deg,#f8fcff,#edfdf8)}
+.bg-symbols{position:absolute;inset:0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.8rem;opacity:.06;font-size:3.5rem;font-weight:900;color:#00C896;pointer-events:none;user-select:none}
+.hero-inner{position:relative;z-index:1}
+.hero h1{font-size:2.4rem;font-weight:900;color:#222;letter-spacing:-1px}
+.hero h1 span{color:#00C896}
+.hero p{color:#888;font-size:1rem;max-width:540px;margin:.6rem auto 0}
+.content{max-width:820px;margin:2.5rem auto;padding:0 1.5rem}
+.card{background:#fff;border-radius:18px;padding:2rem;margin-bottom:1.8rem;box-shadow:0 2px 18px rgba(0,0,0,.05)}
+.card h2{color:#222;font-size:1.35rem;font-weight:700;margin-bottom:1rem}
+.card p{color:#666;margin-bottom:.8rem}
+.card ul{padding-left:1.4rem;color:#666}
+.card ul li{margin-bottom:.3rem}
+.skill-tag{display:inline-block;background:#f0fdf9;color:#00A878;border:1px solid #c8f2e8;border-radius:20px;padding:.3rem .85rem;font-size:.83rem;margin:.25rem;font-weight:600}
+.chapter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:.5rem}
+.ch-card{background:linear-gradient(135deg,#f0fdf9,#e8faf4);border:1px solid #d0f5ec;border-radius:14px;padding:1.2rem 1.4rem;text-decoration:none;color:#333;transition:transform .2s,box-shadow .2s;display:block}
+.ch-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,200,150,.15)}
+.ch-card .ch-num{font-size:.75rem;font-weight:700;color:#00C896;text-transform:uppercase;letter-spacing:1px;margin-bottom:.3rem}
+.ch-card .ch-title{font-weight:700;color:#222;font-size:.97rem;margin-bottom:.3rem}
+.ch-card .ch-sub{font-size:.8rem;color:#888}
+footer{text-align:center;padding:2rem;color:#bbb;font-size:.82rem}
+</style>
+</head>
+<body>
+<nav>
+  <button class="hamburger" onclick="document.getElementById('mm').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="#00C896"/><rect x="5" y="16" width="4" height="8" rx="1" fill="white"/><rect x="12" y="10" width="4" height="14" rx="1" fill="white"/><rect x="19" y="5" width="4" height="19" rx="1" fill="white"/></svg>
+    Linear Algebra
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="chapter1.html">Chapter 1</a>
+    <a href="chapter2.html">Chapter 2</a>
+    <a href="chapter3.html">Chapter 3</a>
+    <a href="chapter4.html">Chapter 4</a>
+    <a href="chapter5.html">Chapter 5</a>
+    <a href="chapter6.html">Chapter 6</a>
+  </div>
+</nav>
+<div class="mobile-menu" id="mm">
+  <a href="index.html">🏠 Home</a>
+  <a href="chapter1.html">Ch 1 · Data as Vectors</a>
+  <a href="chapter2.html">Ch 2 · Matrices as System Operators</a>
+  <a href="chapter3.html">Ch 3 · Solving Linear Equations</a>
+  <a href="chapter4.html">Ch 4 · Vector Spaces</a>
+  <a href="chapter5.html">Ch 5 · Orthogonality</a>
+  <a href="chapter6.html">Ch 6 · Eigenvalues &amp; Eigenvectors</a>
+</div>
+
+<div class="hero">
+  <div class="bg-symbols">∑ λ ⊗ ∞ π Δ ∫ ⊕ β √ μ ⊥ Q ∇ ∈</div>
+  <div class="hero-inner">
+    <h1>Linear <span>Algebra</span></h1>
+    <p>A portfolio exploring the mathematics of vectors, matrices, spaces and transformations — with applications in AI, Computer Science and Engineering.</p>
+  </div>
+</div>
+
+<div class="content">
+  <div class="card">
+    <h2>About This Portfolio</h2>
+    <p>This portfolio has been created to present skills, projects, and a learning journey in a single platform. Through this portfolio, the aim is to highlight efforts in building a strong foundation in computer science and ongoing growth as a learner.</p>
+    <p>Linear Algebra forms the mathematical backbone of modern computing — from machine learning models to computer graphics engines. This site presents each core topic in an applied, practical way.</p>
+  </div>
+
+  <div class="card">
+    <h2>Technical Skills</h2>
+    <span class="skill-tag">C Programming</span>
+    <span class="skill-tag">C++</span>
+    <span class="skill-tag">Problem Solving</span>
+    <span class="skill-tag">Logical Reasoning</span>
+    <span class="skill-tag">Linear Algebra</span>
+    <span class="skill-tag">Matrix Operations</span>
+  </div>
+
+  <div class="card">
+    <h2>Course Chapters</h2>
+    <div class="chapter-grid">
+      <a class="ch-card" href="chapter1.html">
+        <div class="ch-num">Chapter 1</div>
+        <div class="ch-title">Data as Vectors</div>
+        <div class="ch-sub">Vector representation, RGB systems, Spotify recommendation</div>
+      </a>
+      <a class="ch-card" href="chapter2.html">
+        <div class="ch-num">Chapter 2</div>
+        <div class="ch-title">Matrices as System Operators</div>
+        <div class="ch-sub">Transformations, rotations, image processing</div>
+      </a>
+      <a class="ch-card" href="chapter3.html">
+        <div class="ch-num">Chapter 3</div>
+        <div class="ch-title">Solving Linear Equations</div>
+        <div class="ch-sub">Gaussian elimination, LU factorization</div>
+      </a>
+      <a class="ch-card" href="chapter4.html">
+        <div class="ch-num">Chapter 4</div>
+        <div class="ch-title">Vector Spaces</div>
+        <div class="ch-sub">Degrees of freedom, robotics, ML applications</div>
+      </a>
+      <a class="ch-card" href="chapter5.html">
+        <div class="ch-num">Chapter 5</div>
+        <div class="ch-title">Orthogonality</div>
+        <div class="ch-sub">Gram-Schmidt, QR decomposition, least squares</div>
+      </a>
+      <a class="ch-card" href="chapter6.html">
+        <div class="ch-num">Chapter 6</div>
+        <div class="ch-title">Eigenvalues &amp; Eigenvectors</div>
+        <div class="ch-sub">PageRank, Markov chains, diagonalization</div>
+      </a>
+    </div>
+  </div>
+</div>
+<footer>KLE Technological University · Linear Algebra Portfolio</footer>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 – Data as Vectors</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#555;line-height:1.6}
+nav{background:#fff;padding:.9rem 1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:0 2px 10px rgba(0,0,0,.07);position:sticky;top:0;z-index:100}
+.brand{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.05rem;color:#222;text-decoration:none}
+.brand svg{width:28px;height:28px}
+.nav-links{display:flex;gap:1.4rem;flex:1;flex-wrap:wrap}
+.nav-links a{text-decoration:none;color:#777;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:#00C896}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;margin-left:auto}
+.hamburger span{display:block;width:22px;height:2px;background:#555;border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:57px;left:0;right:0;background:#fff;padding:.8rem 1rem;box-shadow:0 6px 20px rgba(0,0,0,.1);z-index:99;border-top:1px solid #f0f0f0}
+.mobile-menu a{display:block;padding:.55rem 1rem;color:#555;text-decoration:none;border-radius:8px;font-size:.92rem}
+.mobile-menu a:hover{background:#f0fdf9;color:#00C896}
+.mobile-menu.open{display:block}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
+.hero{position:relative;text-align:center;padding:3.5rem 2rem 2.5rem;overflow:hidden;background:linear-gradient(135deg,#f8fcff,#edfdf8)}
+.bg-sym{position:absolute;inset:0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.5rem;opacity:.06;font-size:3.5rem;font-weight:900;color:#00C896;pointer-events:none;user-select:none}
+.hero-inner{position:relative;z-index:1}
+.ch-badge{display:inline-block;background:#00C896;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.3rem .9rem;border-radius:20px;margin-bottom:.8rem}
+.hero h1{font-size:2rem;font-weight:900;color:#222;letter-spacing:-.5px}
+.hero p.sub{color:#888;font-size:.93rem;max-width:560px;margin:.5rem auto 0}
+.content{max-width:820px;margin:2.5rem auto;padding:0 1.5rem}
+.card{background:#fff;border-radius:18px;padding:2rem;margin-bottom:1.8rem;box-shadow:0 2px 18px rgba(0,0,0,.05)}
+.card h2{color:#222;font-size:1.25rem;font-weight:700;margin-bottom:.9rem;border-left:4px solid #00C896;padding-left:.8rem}
+.card p{color:#666;margin-bottom:.8rem}
+.card ul{padding-left:1.4rem;color:#666}
+.card ul li{margin-bottom:.35rem}
+.formula{background:#f0fdf9;border-left:4px solid #00C896;padding:.9rem 1.3rem;margin:1rem 0;border-radius:0 10px 10px 0;font-family:'Courier New',monospace;color:#00A878;font-size:1.05rem;font-weight:600}
+.tag-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+.tag{background:#f0fdf9;color:#00A878;border:1px solid #c8f2e8;border-radius:20px;padding:.28rem .8rem;font-size:.8rem;font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.8rem}
+@media(max-width:540px){.grid2{grid-template-columns:1fr}}
+.mini-card{background:#f8fffe;border:1px solid #e0f8f0;border-radius:12px;padding:1rem 1.2rem}
+.mini-card h4{color:#00A878;font-size:.88rem;margin-bottom:.4rem}
+.mini-card p{color:#666;font-size:.85rem;margin:0}
+.nav-footer{display:flex;justify-content:flex-end;margin-top:1rem}
+.nav-btn{display:inline-flex;align-items:center;gap:.4rem;background:#00C896;color:#fff;text-decoration:none;padding:.6rem 1.4rem;border-radius:30px;font-size:.88rem;font-weight:600;transition:background .2s}
+.nav-btn:hover{background:#00b085}
+footer{text-align:center;padding:2rem;color:#bbb;font-size:.82rem}
+</style>
+</head>
+<body>
+<nav>
+  <button class="hamburger" onclick="document.getElementById('mm').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="#00C896"/><rect x="5" y="16" width="4" height="8" rx="1" fill="white"/><rect x="12" y="10" width="4" height="14" rx="1" fill="white"/><rect x="19" y="5" width="4" height="19" rx="1" fill="white"/></svg>
+    Linear Algebra
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="chapter1.html" class="active">Chapter 1</a>
+    <a href="chapter2.html">Chapter 2</a>
+    <a href="chapter3.html">Chapter 3</a>
+    <a href="chapter4.html">Chapter 4</a>
+    <a href="chapter5.html">Chapter 5</a>
+    <a href="chapter6.html">Chapter 6</a>
+  </div>
+</nav>
+<div class="mobile-menu" id="mm">
+  <a href="index.html">🏠 Home</a>
+  <a href="chapter1.html">Ch 1 · Data as Vectors</a>
+  <a href="chapter2.html">Ch 2 · Matrices as System Operators</a>
+  <a href="chapter3.html">Ch 3 · Solving Linear Equations</a>
+  <a href="chapter4.html">Ch 4 · Vector Spaces</a>
+  <a href="chapter5.html">Ch 5 · Orthogonality</a>
+  <a href="chapter6.html">Ch 6 · Eigenvalues &amp; Eigenvectors</a>
+</div>
+
+<div class="hero">
+  <div class="bg-sym">∑ λ ⊗ ∞ π Δ ∫ ⊕ β √ μ ⊥</div>
+  <div class="hero-inner">
+    <div class="ch-badge">Chapter 1</div>
+    <h1>Data as Vectors</h1>
+    <p class="sub">Vector Representation, Matrix Basics, RGB Systems, Spotify Recommendation Systems and Applications of Linear Algebra in AI and Computer Science</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="card">
+    <h2>What is Data?</h2>
+    <p>Data refers to a collection of numerical or informational values used for analysis, computation and representation. In Linear Algebra, data is represented mathematically using vectors and matrices so that calculations and analysis become easier.</p>
+    <p><strong>Examples of Data:</strong></p>
+    <ul>
+      <li>Student marks</li>
+      <li>Temperature readings</li>
+      <li>Sales records</li>
+      <li>Distances</li>
+      <li>Pixel values</li>
+      <li>Population statistics</li>
+      <li>Machine learning datasets</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Vector Representation</h2>
+    <p>A <strong>vector</strong> is an ordered list of numbers that represents a point or direction in space. Vectors allow us to store and manipulate data mathematically.</p>
+    <div class="formula">v = [v₁, v₂, v₃, ..., vₙ]</div>
+    <div class="grid2">
+      <div class="mini-card">
+        <h4>1D Vector</h4>
+        <p>A single number: v = [5] representing temperature or price.</p>
+      </div>
+      <div class="mini-card">
+        <h4>2D Vector</h4>
+        <p>A point in a plane: v = [3, 4] representing (x, y) coordinates.</p>
+      </div>
+      <div class="mini-card">
+        <h4>3D Vector</h4>
+        <p>A point in space: v = [1, 2, 3] used in robotics and graphics.</p>
+      </div>
+      <div class="mini-card">
+        <h4>n-D Vector</h4>
+        <p>High-dimensional: used in ML where each feature is one dimension.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Matrix Basics</h2>
+    <p>A <strong>matrix</strong> is a rectangular array of numbers arranged in rows and columns. It is used to store, transform and analyse data efficiently.</p>
+    <div class="formula">A = [ a₁₁  a₁₂ ]<br>&nbsp;&nbsp;&nbsp;&nbsp;[ a₂₁  a₂₂ ]</div>
+    <p>Key properties: dimensions are written as <em>m × n</em> (rows × columns). Matrices enable us to represent multiple vectors simultaneously and perform batch operations.</p>
+  </div>
+
+  <div class="card">
+    <h2>RGB Colour Systems</h2>
+    <p>Every colour on a screen is represented as a vector of three values — Red, Green and Blue — each ranging from 0 to 255.</p>
+    <div class="formula">colour = [R, G, B]<br>Red   = [255, 0, 0]<br>Green = [0, 255, 0]<br>Blue  = [0, 0, 255]<br>White = [255, 255, 255]</div>
+    <p>An image is a matrix of RGB vectors. Pixel operations like brightness adjustment and contrast enhancement are linear algebra operations on these matrices.</p>
+  </div>
+
+  <div class="card">
+    <h2>Spotify Recommendation System</h2>
+    <p>Music streaming platforms represent each song and each user as a high-dimensional vector. Recommendations are found by measuring how similar (close) two vectors are using the dot product or cosine similarity.</p>
+    <div class="formula">similarity = (u · v) / (‖u‖ × ‖v‖)</div>
+    <p>Songs close in vector space share similar features — tempo, energy, genre — and are likely to appeal to the same listener. This is collaborative filtering powered by Linear Algebra.</p>
+  </div>
+
+  <div class="card">
+    <h2>Applications in AI &amp; Computer Science</h2>
+    <div class="tag-row">
+      <span class="tag">Image Recognition</span>
+      <span class="tag">Natural Language Processing</span>
+      <span class="tag">Recommendation Engines</span>
+      <span class="tag">Data Compression</span>
+      <span class="tag">Search Algorithms</span>
+      <span class="tag">Computer Vision</span>
+    </div>
+    <p style="margin-top:1rem">Every modern AI model treats input data as vectors. Training neural networks involves repeated matrix operations on these vectors, making Linear Algebra the language of machine intelligence.</p>
+  </div>
+
+  <div class="nav-footer">
+    <a class="nav-btn" href="chapter2.html">Chapter 2 →</a>
+  </div>
+</div>
+<footer>KLE Technological University · Linear Algebra Portfolio</footer>
+</body>
+</html>
